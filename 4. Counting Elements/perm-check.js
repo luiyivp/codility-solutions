@@ -1,10 +1,12 @@
 function solution(A) {
     var sum = max = A[0]
-    var length = A.length
-    for (let i = 1; i < length; i++) {
-        if (A[i] > max) max = A[i]
+    var n = A.length
+    var set = new Set()
+    var comp = (n * (n + 1) / 2)
+    set.add(A[0])
+    for (let i = 1; i < n; i++) {
         sum += A[i]
+        set.add(A[i])
     }
-    diff = sum - (max * (max + 1) / 2)
-    return diff == 0 ? 1 : 0
+    return sum == comp && set.size == n ? 1 : 0
 }
